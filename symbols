@@ -1,3 +1,4 @@
+libzip.so.4:_zip_get_dirent
 libzip.so.4:zip_add
 libzip.so.4:zip_add_dir
 libzip.so.4:zip_archive_set_tempdir

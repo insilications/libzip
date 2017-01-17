@@ -4,7 +4,7 @@
 #
 Name     : libzip
 Version  : 1.1.3
-Release  : 1
+Release  : 2
 URL      : https://nih.at/libzip/libzip-1.1.3.tar.xz
 Source0  : https://nih.at/libzip/libzip-1.1.3.tar.xz
 Summary  : library for handling zip archives
@@ -15,6 +15,7 @@ Requires: libzip-lib
 Requires: libzip-doc
 BuildRequires : cmake
 BuildRequires : zlib-dev
+Patch1: export.patch
 
 %description
 This is libzip, a C library for reading, creating, and modifying zip
@@ -60,10 +61,11 @@ lib components for the libzip package.
 
 %prep
 %setup -q -n libzip-1.1.3
+%patch1 -p1
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1484611126
+export SOURCE_DATE_EPOCH=1484619325
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -75,7 +77,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1484611126
+export SOURCE_DATE_EPOCH=1484619325
 rm -rf %{buildroot}
 %make_install
 
