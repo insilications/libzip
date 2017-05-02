@@ -4,7 +4,7 @@
 #
 Name     : libzip
 Version  : 1.2.0
-Release  : 3
+Release  : 4
 URL      : https://nih.at/libzip/libzip-1.2.0.tar.xz
 Source0  : https://nih.at/libzip/libzip-1.2.0.tar.xz
 Summary  : library for handling zip archives
