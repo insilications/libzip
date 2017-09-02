@@ -58,6 +58,7 @@ libzip.so.5:zip_name_locate
 libzip.so.5:zip_open
 libzip.so.5:zip_open_from_source
 libzip.so.5:zip_register_progress_callback
+libzip.so.5:zip_register_progress_callback_with_state
 libzip.so.5:zip_rename
 libzip.so.5:zip_replace
 libzip.so.5:zip_set_archive_comment

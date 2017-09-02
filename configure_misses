@@ -1,0 +1,16 @@
+Configure miss: _chmod
+Configure miss: _close
+Configure miss: _dup
+Configure miss: _fdopen
+Configure miss: _fileno
+Configure miss: _open
+Configure miss: _setmode
+Configure miss: _strdup
+Configure miss: _stricmp
+Configure miss: _strtoi64
+Configure miss: _strtoui64
+Configure miss: _umask
+Configure miss: _unlink
+Configure miss: explicit_memset
+Configure miss: getprogname
+Configure miss: whether we are building for a Win32 host
