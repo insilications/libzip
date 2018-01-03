@@ -4,7 +4,7 @@
 #
 Name     : libzip
 Version  : 1.4.0
-Release  : 8
+Release  : 10
 URL      : https://nih.at/libzip/libzip-1.4.0.tar.xz
 Source0  : https://nih.at/libzip/libzip-1.4.0.tar.xz
 Summary  : library for handling zip archives
@@ -70,19 +70,22 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1515014278
+export SOURCE_DATE_EPOCH=1515023437
 mkdir clr-build
 pushd clr-build
-cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=/usr/lib64 -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib
+cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=/usr/lib64 -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_INSTALL_LIBDIR:PATH=lib64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib
 make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1515014278
+export SOURCE_DATE_EPOCH=1515023437
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
 popd
+## make_install_append content
+mv %{buildroot}/usr/lib/libzip.so* %{buildroot}/usr/lib64/
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -96,7 +99,7 @@ popd
 %files dev
 %defattr(-,root,root,-)
 /usr/include/*.h
-/usr/lib/libzip.so
+/usr/lib64/libzip.so
 /usr/lib64/pkgconfig/libzip.pc
 
 %files doc
@@ -106,5 +109,5 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/libzip.so.5
-/usr/lib/libzip.so.5.0
+/usr/lib64/libzip.so.5
+/usr/lib64/libzip.so.5.0
