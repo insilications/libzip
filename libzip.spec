@@ -4,7 +4,7 @@
 #
 Name     : libzip
 Version  : 1.5.2
-Release  : 13
+Release  : 14
 URL      : https://nih.at/libzip/libzip-1.5.2.tar.xz
 Source0  : https://nih.at/libzip/libzip-1.5.2.tar.xz
 Summary  : library for handling zip archives
@@ -15,6 +15,7 @@ Requires: libzip-lib = %{version}-%{release}
 Requires: libzip-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : bzip2-dev
+BuildRequires : gnutls-dev
 BuildRequires : nettle-dev
 BuildRequires : openssl-dev
 BuildRequires : zlib-dev
@@ -43,6 +44,7 @@ Group: Development
 Requires: libzip-lib = %{version}-%{release}
 Requires: libzip-bin = %{version}-%{release}
 Provides: libzip-devel = %{version}-%{release}
+Requires: libzip = %{version}-%{release}
 
 %description dev
 dev components for the libzip package.
@@ -81,17 +83,21 @@ license components for the libzip package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1553298231
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1568066305
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %cmake ..
 make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1553298231
+export SOURCE_DATE_EPOCH=1568066305
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libzip
 cp LICENSE %{buildroot}/usr/share/package-licenses/libzip/LICENSE
@@ -110,7 +116,8 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/*.h
+/usr/include/zip.h
+/usr/include/zipconf.h
 /usr/lib64/libzip.so
 /usr/lib64/pkgconfig/libzip.pc
 
