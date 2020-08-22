@@ -1,5 +1,5 @@
 PKG_NAME := libzip
-URL = https://nih.at/libzip/libzip-1.5.2.tar.xz
+URL = https://github.com/nih-at/libzip.git
 ARCHIVES = 
 
 include ../common/Makefile.common
