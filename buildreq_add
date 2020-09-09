@@ -1,16 +1,15 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-findutils
-gnutls-dev
-nettle-dev
-openssl-dev
-openssl-staticdev
-zlib-dev
-zlib-staticdev
-perl
+# gnutls-dev
+# nettle-dev
 bzip2
 bzip2-dev
 bzip2-staticdev
+findutils
+openssl-dev
+openssl-staticdev
+perl
+pkg-config
 xz-dev
 xz-staticdev
 zlib-dev
